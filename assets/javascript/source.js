@@ -14,28 +14,52 @@
 $("add-train-btn").on("click", function(event){
     event.preventDefault();
 
-    var trainName = $("#trainName").val().trim();
-    var destination = $("#destination").val().trim();
-    var frequency = $("#frequency").val().trim();
-    var firstTrain = $("#firstTrain").val().trim();
+    var traName = $("#trainName").val().trim();
+    var traDestination = $("#destination").val().trim();
+    var traFrequency = $("#frequency").val().trim();
+    var traFirst = $("#firstTrain").val().trim();
+    var traNext = $("#nextTrain").val().trim();
 
     var trainData = {
-        trainName: trainName,
-        destination: destination,
-        frequency: frequency,
-        nextTrain: nextTrain,
-        firstTrain: firstTrain
+        name: traName,
+        destination: traDestination,
+        frequency: traFrequency,
+        nextTrain: traNext,
+        firstTrain: traFirst
       };
 
-      database.ref().push(trainData)
-})
+     console.log(trainData.traName);
+     console.log(trainData.traDestination);
+     console.log(trainData.traFrequency);
+     console.log(trainData.traFirst);
+     console.log(trainData.traNext);
+
+      database.ref().push(trainData);
+
+      $("#trainName").val("");
+      $("#destination").val("");
+      $("#frequency").val("");
+      $("#firstTrain").val("");
+      $("#nextTrain").val("");
+});
   
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
 
+    var traName = childSnapshot.val().name;
+    var traDestination = childSnapshot.val().destination;
+    var traFrequency = childSnapshot.val().frequency;
+    var traFirst = childSnapshot.val().firstTrain;
+    var traNext = childSnapshot.val().nextTrain;
 
- 
-
+    //Train Details
+    console.log(traName);
+    console.log(traDestination);
+    console.log(traFrequency);
+    console.log(traFirst);
+    console.log(traNext);
     
-
+});
 //Write a function to caculate the time
 
 // Write a function to pull info from firebase and display it in the table
@@ -43,17 +67,3 @@ $("add-train-btn").on("click", function(event){
 //Write function to keep track of the time
 
 //Write function to add new trains to the firebase database
-function writeNewTrain(trainName, destination, frequency, nextTrain, firstTrain) {
-    // A post entry.
-    
-  
-    // Get a key for a new Train.
-    var newTrainKey = firebase.database().ref().child('train').push().key;
-  
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates['/train/' + newTrainKey] = trainData;
-    updates['/train-scedule/' + trainName + '/' + newTrainKey] = trainData;
-  
-    return firebase.database().ref().update(updates);
-  }
