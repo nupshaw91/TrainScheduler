@@ -11,12 +11,30 @@
   // Get a reference to the database service
   var database = firebase.database();
 
-console.log(database)
-  var connectionsRef = database.ref("/connections");
+$("add-train-btn").on("click", function(event){
+    event.preventDefault();
 
-  console.log(connectedRef)
+    var trainName = $("#trainName").val().trim();
+    var destination = $("#destination").val().trim();
+    var frequency = $("#frequency").val().trim();
+    var firstTrain = $("#firstTrain").val().trim();
+
+    var trainData = {
+        trainName: trainName,
+        destination: destination,
+        frequency: frequency,
+        nextTrain: nextTrain,
+        firstTrain: firstTrain
+      };
+
+      database.ref().push(trainData)
+})
   
-  var connectedRef = database.ref(".info/connected");
+
+
+ 
+
+    
 
 //Write a function to caculate the time
 
@@ -27,15 +45,9 @@ console.log(database)
 //Write function to add new trains to the firebase database
 function writeNewTrain(trainName, destination, frequency, nextTrain, firstTrain) {
     // A post entry.
-    var trainData = {
-      trainName: trainName,
-      destination: destination,
-      frequency: frequency,
-      nextTrain: nextTrain,
-      firstTrain: firstTrain
-    };
+    
   
-    // Get a key for a new Post.
+    // Get a key for a new Train.
     var newTrainKey = firebase.database().ref().child('train').push().key;
   
     // Write the new post's data simultaneously in the posts list and the user's post list.
