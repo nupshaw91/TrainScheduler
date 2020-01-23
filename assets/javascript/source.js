@@ -1,59 +1,75 @@
- var config = {
-    apiKey: "AIzaSyAnDS1UCdTZmRUPXpktzyKQGX-UAwylTmc",
-    authDomain: "train-scheduler-1e4c2.firebaseapp.com",
-    databaseURL: "https://train-scheduler-1e4c2.firebaseio.com",
-    storageBucket: "train-scheduler-1e4c2.appspot.com"
-  };
 
+firebaseConfig = {
+  apiKey: "AIzaSyAnDS1UCdTZmRUPXpktzyKQGX-UAwylTmc",
+  authDomain: "train-scheduler-1e4c2.firebaseapp.com",
+  databaseURL: "https://train-scheduler-1e4c2.firebaseio.com",
+  projectId: "train-scheduler-1e4c2",
+  storageBucket: "train-scheduler-1e4c2.appspot.com",
+  messagingSenderId: "691359430436",
+  appId: "1:691359430436:web:94f1513b8f4bc62f5825b1"
+};
 
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 
   // Get a reference to the database service
   var database = firebase.database();
 
   //Write function to add new trains to the firebase database
 
-$("add-train-btn").on("click", function(event){
+
+$("#add-train-btn").on("click", function(event){
     event.preventDefault();
 
-    var traName = $("#trainName").val().trim();
-    var traDestination = $("#destination").val().trim();
-    var traFrequency = $("#frequency").val().trim();
-    var traFirst = $("#firstTrain").val().trim();
-    var traNext = $("#nextTrain").val().trim();
 
-    var trainData = {
-        name: traName,
-        destination: traDestination,
-        frequency: traFrequency,
-        nextTrain: traNext,
-        firstTrain: traFirst
+    var traName = $("#TrainName").val().trim();
+    var traDestination = $("#Destination").val().trim();
+    var traFrequency = $("#Frequency").val().trim();
+    var traFirst = $("#First").val().trim();
+    var traNext = moment($("#Next").val().trim()).startof(traFrequency, 'mins').fromNow(traFirst); 
+
+    console.log(traName)
+    console.log(traDestination)
+    console.log(traFrequency)
+    console.log(traFirst)
+    
+    var Train = {
+        Name: traName,
+        Destination: traDestination,
+        Frequency: traFrequency,
+        Next: traNext,
+        First: traFirst
       };
 
-     console.log(trainData.traName);
-     console.log(trainData.traDestination);
-     console.log(trainData.traFrequency);
-     console.log(trainData.traFirst);
-     console.log(trainData.traNext);
+      database.ref().push(Train);
 
-      database.ref().push(trainData);
 
-      $("#trainName").val("");
-      $("#destination").val("");
-      $("#frequency").val("");
-      $("#firstTrain").val("");
-      $("#nextTrain").val("");
+     
+     console.log(Train.Name);
+     console.log(Train.Destination);
+     console.log(Train.Frequency);
+     console.log(Train.First);
+     console.log(Train.Next);
+
+     alert("Train successfully added");
+      
+
+      $("#TrainName").val("");
+      $("#Destination").val("");
+      $("#Frequency").val("");
+      $("#First").val("");
+      $("#Next").val("");
 });
   // Write a function to pull info from firebase 
   
+
  database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 
-    var traName = childSnapshot.val().name;
-    var traDestination = childSnapshot.val().destination;
-    var traFrequency = childSnapshot.val().frequency;
-    var traFirst = childSnapshot.val().firstTrain;
-    var traNext = childSnapshot.val().nextTrain;
+    var traName = childSnapshot.val().Name;
+    var traDestination = childSnapshot.val().Destination;
+    var traFrequency = childSnapshot.val().Frequency;
+    var traFirst = childSnapshot.val().First;
+    var traNext = childSnapshot.val().Next;
 
     //Train Details
     console.log(traName);
@@ -64,14 +80,14 @@ $("add-train-btn").on("click", function(event){
     
 
     //create and display it in the table
- var table = $("<tr>").append(
+ var tableRow = $("<tr>").append(
   $("<td>"). text(traName),
   $("<td>"). text(traDestination),
   $("<td>"). text(traFrequency),
   $("<td>"). text(traFrequency),
-  $("<td>"). text(),
+  // $("<td>"). text(),
 );
 
-$("> tbody").append(table)
+$("#train-table > tbody").append(tableRow)
 });
 //Write a function to caculate the time

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=q  , initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width  , initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Next Train</title>
 
@@ -24,7 +26,7 @@
    
     <div class="container">
     <div>
-        <table class="table table-dark">
+        <table class="table table-dark" id="train-table">
             <thead>
               <tr>
                 <th scope="col">Train name</th>
@@ -35,20 +37,6 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row"><span ></span></th>
-                <td>Atlanta, GA</td>
-                <td>20</td>
-                <td>8:15</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">Alpha-102</th>
-                <td>Dallas, Tx</td>
-                <td>45</td>
-                <td>20:40</td>
-                <td>@fat</td>
-              </tr>
               <tr>
                 <th scope="row">Alpha-103</th>
                 <td>Washington D.C</td>
@@ -68,16 +56,18 @@
          
             <div class="form-group">
               <label for="Destination">Destination</label>
-              <textarea class="form-control" id="Destination" rows="1"></textarea>
+              <input type="text" class="form-control" id="Destination" placeholder="City, State">
             </div>
             <div class="form-group">
-              <label for="FirstTrainTime">First Train Time(HH:mm - militry time)</label>
-              <textarea class="form-control" id="FirstTrainTime" rows="1"></textarea>
+              <label for="First">First Train Time(HH:mm - militry time)</label>
+              <input type="text" class="form-control" id="First" placeholder="21:00">
+              
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Frequency (min)</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-              <input id="add-train-btn" class="btn btn-outline-secondary font" type="submit" value="add-train-btn" for="add-train-btn">
+              <label for="Frequency">Frequency (min)</label>
+              <input type="text" class="form-control" id="Frequency" placeholder="20">
+
+              <input id="add-train-btn" class="btn btn-outline-secondary font" type="submit"  for="add-train-btn">
             </div>
           </form>
     </div>
