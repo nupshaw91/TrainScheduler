@@ -11,6 +11,8 @@
   // Get a reference to the database service
   var database = firebase.database();
 
+  //Write function to add new trains to the firebase database
+
 $("add-train-btn").on("click", function(event){
     event.preventDefault();
 
@@ -42,8 +44,9 @@ $("add-train-btn").on("click", function(event){
       $("#firstTrain").val("");
       $("#nextTrain").val("");
 });
+  // Write a function to pull info from firebase 
   
-database.ref().on("child_added", function(childSnapshot) {
+ database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 
     var traName = childSnapshot.val().name;
@@ -59,11 +62,16 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(traFirst);
     console.log(traNext);
     
+
+    //create and display it in the table
+ var table = $("<tr>").append(
+  $("<td>"). text(traName),
+  $("<td>"). text(traDestination),
+  $("<td>"). text(traFrequency),
+  $("<td>"). text(traFrequency),
+  $("<td>"). text(),
+);
+
+$("> tbody").append(table)
 });
 //Write a function to caculate the time
-
-// Write a function to pull info from firebase and display it in the table
-
-//Write function to keep track of the time
-
-//Write function to add new trains to the firebase database
