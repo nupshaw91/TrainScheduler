@@ -72,7 +72,7 @@ $("#add-train-btn").on("click", function(event){
     var traDestination = childSnapshot.val().Destination;
     var traFrequency = childSnapshot.val().Frequency;
     var traFirst = childSnapshot.val().First;
-    var traNext = childSnapshot.val().Next;
+    // var traNext = childSnapshot.val().Next;
 
     //Train Details
     // console.log(traName);
