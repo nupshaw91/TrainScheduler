@@ -12,5 +12,7 @@ Purpose:
 ### Future Scope:
 
 *   Add a delete funntion.
-    Have the next train times more precise.
-    Add More unique styling for more trains and different start times for the same destination
+
+* Have the next train times more precise.
+
+* Add More unique styling for more trains and different start times for the same destination
