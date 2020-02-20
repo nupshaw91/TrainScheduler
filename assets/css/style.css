@@ -1,0 +1,8 @@
+body{
+    background-color: darkgray;
+}
+#clock{
+    border: solid black;
+    font-size: x-large;
+    color: chartreuse;
+}

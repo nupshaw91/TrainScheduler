@@ -3,17 +3,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width  , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Next Train</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width  , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Next Train</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -21,51 +22,103 @@
   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
 </head>
-<body>
-  
-   
-    <div class="container">
-      <div id="clock"></div>
-    <div>
-        <table class="table table-dark" id="train-table">
-            <thead>
-              <tr>
-                <th scope="col">Train name</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Frequency</th>
-                <th scope="col">First Train</th>
-                <th scope="col">Next Train</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-    </div>
-    <div>
-        <form>
-            <div class="form-group">
-              <label for="TrainName">Train Name</label>
-              <input type="text" class="form-control" id="TrainName" placeholder="Train Name">
-            </div>
-         
-            <div class="form-group">
-              <label for="Destination">Destination</label>
-              <input type="text" class="form-control" id="Destination" placeholder="City, State">
-            </div>
-            <div class="form-group">
-              <label for="First">First Train Time(HH:mm - militry time)</label>
-              <input type="text" class="form-control" id="First" placeholder="21:00">
-              
-            </div>
-            <div class="form-group">
-              <label for="Frequency">Frequency (min)</label>
-              <input type="text" class="form-control" id="Frequency" placeholder="20">
 
-              <input id="add-train-btn" class="btn btn-outline-secondary font" type="submit"  for="add-train-btn">
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+  </nav>
+  
+ 
+
+    <div id="container-fluid">
+     
+      <div class="row ">
+        <div id="clock"></div>
+      </div>
+
+      <div class="row ">
+        <div class="col-sm"></div>
+        <div class="col-sm">
+          <div>
+            <p>Please fill out the form on the left to add a train. Your train will be added to the table on the right.
+              <strong>The DBA is the only person allowed to delete trains from list.</strong>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+
+
+      <div class="row ">
+
+        <div class="col-sm"></div>
+
+        <div class="col-sm-4 ">
+          <div>
+            <form>
+              <div class="form-group">
+                <label for="TrainName">Train Name</label>
+                <input type="text" class="form-control" id="TrainName" placeholder="Alpha-###">
+              </div>
+
+              <div class="form-group">
+                <label for="Destination">Destination</label>
+                <input type="text" class="form-control" id="Destination" placeholder="City, State">
+              </div>
+              <div class="form-group">
+                <label for="First">First Train Time(HH:mm - militry time)</label>
+                <input type="text" class="form-control" id="First" placeholder="21:00">
+
+              </div>
+              <div class="form-group">
+                <label for="Frequency">Frequency (min)</label>
+                <input type="text" class="form-control" id="Frequency" placeholder="20">
+                <input id="add-train-btn" class="btn btn-outline-secondary font" type="submit" for="add-train-btn">
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6">
+          <div class="row">
+            <form action="search"></form>
+            <div class="col"></div>
+            <div class="col">
+              <label for="Frequency">Search Trains</label>
+              <input type="text" class="form-control" id="search" placeholder="search">
+              </form>
             </div>
-          </form>
+          </div>
+          <div class="row">
+          
+            <table class="table table-dark table-hover" id="train-table">
+              <thead>
+                <tr>
+                  <th scope="col">Train name</th>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Frequency</th>
+                  <th scope="col">First Train</th>
+                  <th scope="col">Next Train</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+        </div>
+        </div>
+
+      <div class="col-sm"></div>
     </div>
-  </div>
-    <script src="./assets/javascript/source.js"></script>
+
+
+</div>
+
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="./assets/javascript/source.js"></script>
 </body>
+
 </html>
