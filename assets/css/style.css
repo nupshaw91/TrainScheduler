@@ -2,7 +2,11 @@ body{
     background-color: darkgray;
 }
 #clock{
-    border: solid black;
     font-size: x-large;
     color: chartreuse;
+    text-align: center;
+}
+
+.navbar-brand{
+    font-family: 'Courgette', cursive;
 }
