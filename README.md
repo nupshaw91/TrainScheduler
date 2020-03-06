@@ -12,7 +12,14 @@ Purpose:
 How to get started:
 
 - Open the app the current time is displayed on the top of the screen for yout convience.
-- Fill out the form starting with the train name. Train name should start with Alpha - then add a 3 digit number.
+
+- Fill out the form starting with the train name. Train name should start with Alpha - then add a 3 digit number. If there is already a destination follow the next greek alphabet and keep the same numerical number as the previous cities.
+
+- The information you enter into the form will go into the database and display on the table.
+
+- You can narrow the table by typing any destination, start time, train name or frequency to the table search bar.
+
+- Only the Admin have the ability to delete trains from the system.
 
 ### Future Scope:
 
