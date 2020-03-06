@@ -17,6 +17,7 @@ var database = firebase.database();
 
 
 //Table atributtes to make user friendly
+//**----Need to add pagination and sorting feature */
 
 $(document).ready(function () {
   $("#search").on("keyup", function () {
