@@ -1,3 +1,4 @@
+//**--- Add authentication feature to have a delete feature under admin only */
 
 firebaseConfig = {
   apiKey: "AIzaSyAnDS1UCdTZmRUPXpktzyKQGX-UAwylTmc",
@@ -175,4 +176,3 @@ database.ref().on("child_added", function (childSnapshot) {
 
   $("#train-table > tbody").append(tableRow)
 });
-//Write a function to caculate the time
