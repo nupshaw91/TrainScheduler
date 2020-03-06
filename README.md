@@ -21,10 +21,16 @@ How to get started:
 
 - Only the Admin have the ability to delete trains from the system.
 
+### Features
+- Dark mode (click dark in navbar)
+- filter table by searchbar
+- sort table (click header you want to sort by)
+
+
 ### Future Scope:
 
 *   Add a delete funntion.
 
 * Have the next train times more precise.
 
-* Add More unique styling for more trains and different start times for the same destination
+* Add authentication feature for admin
