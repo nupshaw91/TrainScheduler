@@ -32,6 +32,7 @@ $(document).ready(function () {
 
 
 //Write function to add new trains to the firebase database
+//**---Need to Add a deletion feature */
 
 $("#add-train-btn").on("click", function (event) {
   event.preventDefault();
