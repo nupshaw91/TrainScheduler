@@ -85,6 +85,11 @@ function sortTable(n) {
   }
 }
 
+//Dark-mode feature
+function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
 
 
 //Write function to add new trains to the firebase database

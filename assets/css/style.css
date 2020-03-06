@@ -1,5 +1,8 @@
 body{
     background-color: darkgray;
+    padding: 25px;
+  
+  color: black;
 }
 #clock{
     font-size: x-large;
@@ -10,3 +13,8 @@ body{
 .navbar-brand{
     font-family: 'Courgette', cursive;
 }
+
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
