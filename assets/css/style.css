@@ -1,8 +1,7 @@
 body{
     background-color: darkgray;
     padding: 25px;
-  
-  color: black;
+    color: black;
 }
 #clock{
     font-size: x-large;
@@ -14,7 +13,13 @@ body{
     font-family: 'Courgette', cursive;
 }
 
+button{
+    background-color: transparent;
+}
+
 .dark-mode {
     background-color: black;
     color: white;
   }
+
+  
